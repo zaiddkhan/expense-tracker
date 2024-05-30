@@ -4,21 +4,44 @@ import { MainLayout } from './styles/Layout';
 import Orb from './Components/Orb/Orb'
 import Navigation from './Components/Navigation/navigation';
 import React, {useState,useMemo} from 'react';
+import Dashboard from './Components/Dashboard/dashboard';
+import Incomes from './Components/Income/income';
+import Expenses from './Components/Expenses/expenses';
+import { useGlobalContext } from './context/globalContext';
 
 function App() {
   const [active,setActive] = React.useState(1)
 
-  const orbName = useMemo   
+  const global = useGlobalContext()
+     
   
 
-  const obrMemo = usrMemo(() => {
+  const obrMemo = useMemo(() => {
     return <Orb />
-  })
+  },[])
+
+  const displayData = ()=> {
+    switch(active) {
+      case 1:
+        return <Dashboard/> 
+      case 2:
+        return <Dashboard/>
+      case 3:
+        return <Incomes/>
+      case 4:
+        return <Expenses/>
+      default:
+        return <Dashboard/>
+    }
+  }
   return (
     <AppStyled bg = {bg} className="App">
-     <obrMemo />
+     { obrMemo }
       <MainLayout>
         <Navigation active={active} setActive = {setActive} />
+        <main>
+          {displayData}
+        </main>
       </MainLayout>
     </AppStyled>
   );
