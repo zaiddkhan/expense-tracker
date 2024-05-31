@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useGlobalContext } from '../../context/globalContext';
-import History from '../../History/History';
-import { InnerLayout } from '../../styles/Layouts';
-import { dollar } from '../../utils/icons.js';
+import { InnerLayout } from '../../styles/Layout.js';
+import { dollar } from '../../utils/Icons.js';
 import Chart from '../Chart/Chart';
+import IncomeItem from '../IncomeItem/IcomeItem.js';
+import   History from '../../History/History.js'
 
 function Dashboard() {
     const {totalExpenses,incomes, expenses, totalIncome, totalBalance, getIncomes, getExpenses } = useGlobalContext()
