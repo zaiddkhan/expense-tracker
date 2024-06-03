@@ -1,19 +1,23 @@
-import React, { useEffect } from 'react'
-import styled from 'styled-components'
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
 import { useGlobalContext } from '../../context/globalContext';
-import { InnerLayout } from '../../styles/Layout.js';
-import { dollar } from '../../utils/Icons.js';
-import Chart from '../Chart/Chart';
-import IncomeItem from '../IncomeItem/IcomeItem.js';
-import   History from '../../History/History.js'
+import History from '../../History/History';
+import { InnerLayout } from '../../styles/Layout';
+import { dollar } from '../../utils/Icons';
+import Chart from '../Chart/chart';
 
 function Dashboard() {
-    const {totalExpenses,incomes, expenses, totalIncome, totalBalance, getIncomes, getExpenses } = useGlobalContext()
+    const { totalExpenses, incomes, expenses, totalIncome, totalBalance, getIncomes, getExpenses } = useGlobalContext();
 
     useEffect(() => {
-        getIncomes()
-        getExpenses()
-    }, [])
+        getIncomes();
+        getExpenses();
+    }, []);
+
+    useEffect(() => {
+        console.log('Incomes:', incomes);
+        console.log('Expenses:', expenses);
+    }, [incomes, expenses]);
 
     return (
         <DashboardStyled>
@@ -67,44 +71,45 @@ function Dashboard() {
                 </div>
             </InnerLayout>
         </DashboardStyled>
-    )
+    );
 }
 
 const DashboardStyled = styled.div`
-    .stats-con{
+    .stats-con {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         gap: 2rem;
-        .chart-con{
+        .chart-con {
             grid-column: 1 / 4;
             height: 400px;
-            .amount-con{
+            background: #f0f0f0; // Temporary background color for debugging
+            .amount-con {
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 gap: 2rem;
                 margin-top: 2rem;
-                .income, .expense{
+                .income, .expense {
                     grid-column: span 2;
                 }
-                .income, .expense, .balance{
+                .income, .expense, .balance {
                     background: #FCF6F9;
                     border: 2px solid #FFFFFF;
                     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
                     border-radius: 20px;
                     padding: 1rem;
-                    p{
+                    p {
                         font-size: 3.5rem;
                         font-weight: 700;
                     }
                 }
 
-                .balance{
+                .balance {
                     grid-column: 2 / 4;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    p{
+                    p {
                         color: var(--color-green);
                         opacity: 0.6;
                         font-size: 4.5rem;
@@ -113,21 +118,22 @@ const DashboardStyled = styled.div`
             }
         }
 
-        .history-con{
+        .history-con {
             grid-column: 4 / -1;
-            h2{
+            background: #f0f0f0; // Temporary background color for debugging
+            h2 {
                 margin: 1rem 0;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
             }
-            .salary-title{
+            .salary-title {
                 font-size: 1.2rem;
-                span{
+                span {
                     font-size: 1.8rem;
                 }
             }
-            .salary-item{
+            .salary-item {
                 background: #FCF6F9;
                 border: 2px solid #FFFFFF;
                 box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
@@ -136,7 +142,7 @@ const DashboardStyled = styled.div`
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                p{
+                p {
                     font-weight: 600;
                     font-size: 1.6rem;
                 }
@@ -145,4 +151,4 @@ const DashboardStyled = styled.div`
     }
 `;
 
-export default Dashboard
+export default Dashboard;

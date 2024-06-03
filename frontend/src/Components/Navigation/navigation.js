@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState } from 'react'
+import styled from 'styled-components'
 import avatar from '../../img/avatar.png'
-import { menuItems } from "../../utils/menuitems";
+import { signout } from '../../utils/Icons'
+import { menuItems } from '../../utils/menuitems'
 
-function Navigation(active,setActive) {
+function Navigation({active, setActive}) {
     
     return (
         <NavStyled>
             <div className="user-con">
-                <img src = {avatar} alt = ""/>
+                <img src={avatar} alt="" />
                 <div className="text">
                     <h2>Mike</h2>
                     <p>Your Money</p>
@@ -17,10 +18,9 @@ function Navigation(active,setActive) {
             <ul className="menu-items">
                 {menuItems.map((item) => {
                     return <li
-                    key = {item.id}
-                    onClick={ () => setActive(item.id)}
-                    className={active === item.id ? 'active' : ''}
-                    
+                        key={item.id}
+                        onClick={() => setActive(item.id)}
+                        className={active === item.id ? 'active': ''}
                     >
                         {item.icon}
                         <span>{item.title}</span>
@@ -37,18 +37,18 @@ function Navigation(active,setActive) {
 }
 
 const NavStyled = styled.nav`
-     padding : 2rem 1.5 rem;
-     width : 374px;
-     height : 100%;
-     background : rgba(252,246,249,0.78);
-     border : 3px solid #FFFFFF;
-     backdrop-filter: blur(4.5px);
-     border-radius : 32px;
-     display : flex;
-     flex-direction : column;
-     justify-content : space-between;
-     gap : 2rem;
-     .user-con {
+    padding: 2rem 1.5rem;
+    width: 374px;
+    height: 100%;
+    background: rgba(252, 246, 249, 0.78);
+    border: 3px solid #FFFFFF;
+    backdrop-filter: blur(4.5px);
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    .user-con{
         height: 100px;
         display: flex;
         align-items: center;
@@ -69,8 +69,9 @@ const NavStyled = styled.nav`
         p{
             color: rgba(34, 34, 96, .6);
         }
-     }
-     .menu-items{
+    }
+
+    .menu-items{
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -92,6 +93,7 @@ const NavStyled = styled.nav`
             }
         }
     }
+
     .active{
         color: rgba(34, 34, 96, 1) !important;
         i{

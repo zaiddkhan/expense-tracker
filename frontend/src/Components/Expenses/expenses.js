@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useGlobalContext } from '../../context/globalContext';
 import { InnerLayout } from '../../styles/Layout.js';
 import Form from '../Form/Form.js';
-import IncomeItem from '../../'
+import IncomeItem from '../../Components/IncomeItem/IcomeItem.js'
 import ExpenseForm from './ExpenseForm';
 
 function Expenses() {
